@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs",
+      "destination": "https://taskmaster-49ce32d5.mintlify.dev/docs"
+    },
+    {
+      "source": "/docs/:match*",
+      "destination": "https://taskmaster-49ce32d5.mintlify.dev/docs/:match*"
+    }
+  ]
+}
