@@ -5,95 +5,99 @@ description: "This tutorial will guide you through setting up and using Task Mas
 
 ## Initial Setup
 
-There are two ways to set up Task Master: using MCP (recommended) or via npm installation.
-
-### Option 1: Using MCP (Recommended)
-
 <Tip>
   MCP (Model Control Protocol) provides the easiest way to get started with Task Master directly in your editor.
 </Tip>
 
-<Steps>
-  <Step title="Add the MCP config to your editor">
-    Cursor recommended, but it works with other text editors
+<AccordionGroup>
+  <Accordion title="Option 1: Using MCP (Recommended)" icon="sparkles">
+    <Steps>
+      <Step title="Add the MCP config to your editor">
+        Cursor recommended, but it works with other text editors
 
-    <CodeGroup>
+        <CodeGroup>
 
-    ```json MCP Config
-    {
-    	"mcpServers": {
-    		"taskmaster-ai": {
-    			"command": "npx",
-    			"args": ["-y", "--package", "task-master-ai", "task-master-mcp"],
-    			"env": {
-    				"ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
-    				"PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
-    				"MODEL": "claude-3-7-sonnet-20250219",
-    				"PERPLEXITY_MODEL": "sonar-pro",
-    				"MAX_TOKENS": 128000,
-    				"TEMPERATURE": 0.2,
-    				"DEFAULT_SUBTASKS": 5,
-    				"DEFAULT_PRIORITY": "medium"
-    			}
-    		}
-    	}
-    }
-    ```
+        ```json MCP Config
+        {
+        	"mcpServers": {
+        		"taskmaster-ai": {
+        			"command": "npx",
+        			"args": ["-y", "--package", "task-master-ai", "task-master-mcp"],
+        			"env": {
+        				"ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
+        				"PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
+        				"MODEL": "claude-3-7-sonnet-20250219",
+        				"PERPLEXITY_MODEL": "sonar-pro",
+        				"MAX_TOKENS": 128000,
+        				"TEMPERATURE": 0.2,
+        				"DEFAULT_SUBTASKS": 5,
+        				"DEFAULT_PRIORITY": "medium"
+        			}
+        		}
+        	}
+        }
+        ```
 
-    </CodeGroup>
-  </Step>
-  <Step title="Enable the MCP in your editor settings">
-    
-  </Step>
-  <Step title="Prompt the AI to initialize Task Master">
-    > Can you please initialize taskmaster-ai into my project?
-  </Step>
-</Steps>
+        </CodeGroup>
+      </Step>
+      <Step title="Enable the MCP in your editor settings">
+        
+      </Step>
+      <Step title="Prompt the AI to initialize Task Master">
+        > "Can you please initialize taskmaster-ai into my project?"
 
-**The AI will:**
+        **The AI will:**
 
-1. Create necessary project structure
-2. Set up initial configuration files
-3. Guide you through the rest of the process
-4. Place your PRD document in the `scripts/` directory (e.g., `scripts/prd.txt`)
-5. **Use natural language commands** to interact with Task Master:
+        1. Create necessary project structure
+        2. Set up initial configuration files
+        3. Guide you through the rest of the process
+        4. Place your PRD document in the `scripts/` directory (e.g., `scripts/prd.txt`)
+        5. **Use natural language commands** to interact with Task Master:
 
-   > "Can you parse my PRD at scripts/prd.txt?"
-   >
-   > "What's the next task I should work on?"
-   >
-   > "Can you help me implement task 3?"
-
-### Option 2: Manual Installation
-
-<Steps>
-  <Step title="Install">
+           > "Can you parse my PRD at scripts/prd.txt?"
+           >
+           > "What's the next task I should work on?"
+           >
+           > "Can you help me implement task 3?"
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Option 2: Manual Installation" icon="sparkles">
     If you prefer to use the command line interface directly:
 
-    ```bash
-    # Install globally
-    npm install -g task-master-ai
-    
-    # OR install locally within your project
-    npm install task-master-ai
-    ```
-  </Step>
-  <Step title="Initialize a new project">
-    If installed globally
+    <Steps>
+      <Step title="Install">
+        <CodeGroup>
 
-    ```
-    task-master init
-    ```
+        ```bash Global
+        npm install -g task-master-ai
+        ```
 
-    If installed locally
+        
+        ```bash Local
+        npm install task-master-ai
+        ```
 
-    ```
-    npx task-master-init
-    ```
+        </CodeGroup>
+      </Step>
+      <Step title="Initialize a new project">
+        <CodeGroup>
 
+        ```bash Global
+        task-master init
+        ```
+
+        
+        ```bash Local
+        npx task-master-init
+        ```
+
+        </CodeGroup>
+      </Step>
+    </Steps>
     This will prompt you for project details and set up a new project with the necessary files and structure.
-  </Step>
-</Steps>
+  </Accordion>
+</AccordionGroup>
 
 ## Common Commands
 
@@ -117,41 +121,58 @@ task-master generate
 
 ## Setting up Cursor AI Integration
 
-Task Master is designed to work seamlessly with [Cursor AI](https://www.cursor.so/), providing a structured workflow for AI-driven development.
+<Check>
+  Task Master is designed to work seamlessly with [Cursor AI](https://www.cursor.so/), providing a structured workflow for AI-driven development. 
+</Check>
 
-### Using Cursor with MCP (Recommended)
+<AccordionGroup>
+  <Accordion title="Using Cursor with MCP (Recommended)" icon="sparkles">
+    If you've already set up Task Master with MCP in Cursor, the integration is automatic. You can simply use natural language to interact with Task Master:
 
-If you've already set up Task Master with MCP in Cursor, the integration is automatic. You can simply use natural language to interact with Task Master:
+    ```
+    What tasks are available to work on next?
+    Can you analyze the complexity of our tasks?
+    I'd like to implement task 4. What does it involve?
+    ```
+  </Accordion>
+  <Accordion title="Manual Cursor Setup">
+    If you're not using MCP, you can still set up Cursor integration:
 
-```
-What tasks are available to work on next?
-Can you analyze the complexity of our tasks?
-I'd like to implement task 4. What does it involve?
-```
-
-### Manual Cursor Setup
-
-If you're not using MCP, you can still set up Cursor integration:
-
-1. After initializing your project, open it in Cursor
-2. The `.cursor/rules/dev_workflow.mdc` file is automatically loaded by Cursor, providing the AI with knowledge about the task management system
-3. Place your PRD document in the `scripts/` directory (e.g., `scripts/prd.txt`)
-4. Open Cursor's AI chat and switch to Agent mode
-
-### Alternative MCP Setup in Cursor
-
-You can also set up the MCP server in Cursor settings:
-
-1. Go to Cursor settings
-2. Navigate to the MCP section
-3. Click on "Add New MCP Server"
-4. Configure with the following details:
-   - Name: "Task Master"
-   - Type: "Command"
-   - Command: "npx -y --package task-master-ai task-master-mcp"
-5. Save the settings
-
-Once configured, you can interact with Task Master's task management commands directly through Cursor's interface, providing a more integrated experience.
+    <Steps>
+      <Step title="After initializing your project, open it in Cursor">
+        The `.cursor/rules/dev_workflow.mdc` file is automatically loaded by Cursor, providing the AI with knowledge about the task management system
+      </Step>
+      <Step title="Place your PRD document in the scripts/ directory (e.g., scripts/prd.txt)">
+        
+      </Step>
+      <Step title="Open Cursor's AI chat and switch to Agent mode">
+        
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Alternative MCP Setup in Cursor">
+    <Steps>
+      <Step title="Go to Cursor settings">
+        
+      </Step>
+      <Step title="Navigate to the MCP section">
+        
+      </Step>
+      <Step title="Click on 'Add New MCP Server'">
+        
+      </Step>
+      <Step title="Configure with the following details:">
+        - Name: "Task Master"
+        - Type: "Command"
+        - Command: "npx -y --package task-master-ai task-master-mcp"
+      </Step>
+      <Step title="Save Settings">
+        
+      </Step>
+    </Steps>
+    Once configured, you can interact with Task Master's task management commands directly through Cursor's interface, providing a more integrated experience.
+  </Accordion>
+</AccordionGroup>
 
 ## Initial Task Generation
 
@@ -321,7 +342,7 @@ task-master expand --id=5 --research
 ## Example Cursor AI Interactions
 
 <AccordionGroup>
-  <Accordion title="Starting a new project" iconType="regular">
+  <Accordion title="Starting a new project">
     ```
     I've just initialized a new project with Claude Task Master. I have a PRD at scripts/prd.txt.
     Can you help me parse it and set up the initial tasks?
