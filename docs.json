@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Task Master",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,12 +11,11 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Guide",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "docs/intro",
               "docs/Installation",
               "docs/cursor-setup",
               "docs/configuration",
@@ -53,19 +52,6 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
   },
   "footer": {
     "socials": {
