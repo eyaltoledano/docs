@@ -16,6 +16,7 @@
           {
             "group": "Get Started",
             "pages": [
+              "docs/intro",
               "docs/Installation",
               "docs/cursor-setup",
               "docs/configuration",
@@ -26,7 +27,9 @@
             "group": "Essentials",
             "pages": [
               "docs/task-structure",
-              "docs/examples"
+              "docs/examples",
+              "docs/command-reference",
+              "docs/ai-client-utils-example"
             ]
           }
         ]
@@ -66,9 +69,8 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/TaskmasterAI",
+      "github": "https://github.com/eyaltoledano/claude-task-master"
     }
   }
 }

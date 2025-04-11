@@ -1,5 +1,5 @@
 ---
-title: "Task Structure"
+title: "Tasks.json Task Fields"
 description: "Tasks in Task Master follow a specific format designed to provide comprehensive information for both humans and AI assistants."
 ---
 
@@ -7,17 +7,17 @@ description: "Tasks in Task Master follow a specific format designed to provide 
 
 Tasks in tasks.json have the following structure:
 
-- `id`: Unique identifier for the task (Example: `1`)
-- `title`: Brief, descriptive title of the task (Example: `"Initialize Repo"`)
-- `description`: Concise description of what the task involves (Example: `"Create a new repository, set up initial structure."`)
-- `status`: Current state of the task (Example: `"pending"`, `"done"`, `"deferred"`)
-- `dependencies`: IDs of tasks that must be completed before this task (Example: `[1, 2]`)
-  - Dependencies are displayed with status indicators (✅ for completed, ⏱️ for pending)
-  - This helps quickly identify which prerequisite tasks are blocking work
-- `priority`: Importance level of the task (Example: `"high"`, `"medium"`, `"low"`)
-- `details`: In-depth implementation instructions (Example: `"Use GitHub client ID/secret, handle callback, set session token."`)
-- `testStrategy`: Verification approach (Example: `"Deploy and call endpoint to confirm 'Hello World' response."`)
-- `subtasks`: List of smaller, more specific tasks that make up the main task (Example: `[{"id": 1, "title": "Configure OAuth", ...}]`)
+| Field          | Description                                    | Example                                                |
+| -------------- | ---------------------------------------------- | ------------------------------------------------------ |
+| `id`           | Unique identifier for the task.                | `1`                                                    |
+| `title`        | Brief, descriptive title.                      | `"Initialize Repo"`                                    |
+| `description`  | What the task involves.                        | `"Create a new repository, set up initial structure."` |
+| `status`       | Current state.                                 | `"pending"`, `"done"`, `"deferred"`                    |
+| `dependencies` | Prerequisite task IDs. ✅ Completed, ⏱️ Pending | `[1, 2]`                                               |
+| `priority`     | Task importance.                               | `"high"`, `"medium"`, `"low"`                          |
+| `details`      | Implementation instructions.                   | `"Use GitHub client ID/secret, handle callback..."`    |
+| `testStrategy` | How to verify success.                         | `"Deploy and confirm 'Hello World' response."`         |
+| `subtasks`     | Nested subtasks related to the main task.      | `[{"id": 1, "title": "Configure OAuth", ...}]`         |
 
 ## Task File Format
 
@@ -39,8 +39,8 @@ Individual task files follow this format:
 
 ## Features in Detail
 
-### Analyzing Task Complexity
-
+<AccordionGroup>
+<Accordion title="Analyzing Task Complexity">
 The `analyze-complexity` command:
 
 - Analyzes each task using AI to assess its complexity on a scale of 1-10
@@ -55,9 +55,9 @@ The generated report contains:
 - Recommended number of subtasks based on complexity
 - AI-generated expansion prompts customized for each task
 - Ready-to-run expansion commands directly within each task analysis
+</Accordion>
 
-### Viewing Complexity Report
-
+<Accordion title="Viewing Complexity Report">
 The `complexity-report` command:
 
 - Displays a formatted, easy-to-read version of the complexity analysis report
@@ -66,9 +66,9 @@ The `complexity-report` command:
 - Highlights tasks recommended for expansion based on threshold score
 - Includes ready-to-use expansion commands for each complex task
 - If no report exists, offers to generate one on the spot
+</Accordion>
 
-### Smart Task Expansion
-
+<Accordion title="Smart Task Expansion">
 The `expand` command automatically checks for and uses the complexity report:
 
 When a complexity report exists:
@@ -92,9 +92,9 @@ task-master expand --id=8
 # or expand all tasks
 task-master expand --all
 ```
+</Accordion>
 
-### Finding the Next Task
-
+<Accordion title="Finding the Next Task">
 The `next` command:
 
 - Identifies tasks that are pending/in-progress and have all dependencies satisfied
@@ -107,9 +107,9 @@ The `next` command:
   - Command to mark the task as in-progress
   - Command to mark the task as done
   - Commands for working with subtasks
+</Accordion>
 
-### Viewing Specific Task Details
-
+<Accordion title="Viewing Specific Task Details">
 The `show` command:
 
 - Displays comprehensive details about a specific task or subtask
@@ -118,6 +118,8 @@ The `show` command:
 - For subtasks, shows parent task relationship
 - Provides contextual action suggestions based on the task's state
 - Works with both regular tasks and subtasks (using the format taskId.subtaskId)
+</Accordion>
+</AccordionGroup>
 
 ## Best Practices for AI-Driven Development
 
