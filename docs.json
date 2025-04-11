@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Task Master",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3366CC",
+    "light": "#6699FF",
+    "dark": "#24478F"
   },
   "favicon": "/favicon.svg",
   "navigation": {

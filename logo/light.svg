@@ -1,6 +1,6 @@
 <svg width="800" height="240" viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
-  <rect width="800" height="240" fill="#FFFFFF"/>
+  <rect width="800" height="240" fill="transparent"/>
 
   <!-- Curly braces -->
   <text x="40" y="156" font-size="140" fill="#000000" font-family="monospace">{</text>
@@ -15,5 +15,5 @@
   <rect x="168" y="164" width="48" height="10" fill="#FFFFFF"/>
 
   <!-- Text -->
-  <text x="310" y="156" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="#000000">Task Master</text>
+  <text x="340" y="156" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="#000000">Task Master</text>
 </svg>
