@@ -123,20 +123,40 @@ The `show` command:
 
 ## Best Practices for AI-Driven Development
 
-1. **Start with a detailed PRD**: The more detailed your PRD, the better the generated tasks will be.
-
-2. **Review generated tasks**: After parsing the PRD, review the tasks to ensure they make sense and have appropriate dependencies.
-
-3. **Analyze task complexity**: Use the complexity analysis feature to identify which tasks should be broken down further.
-
-4. **Follow the dependency chain**: Always respect task dependencies - the Cursor agent will help with this.
-
-5. **Update as you go**: If your implementation diverges from the plan, use the update command to keep future tasks aligned with your current approach.
-
-6. **Break down complex tasks**: Use the expand command to break down complex tasks into manageable subtasks.
-
-7. **Regenerate task files**: After any updates to tasks.json, regenerate the task files to keep them in sync.
-
-8. **Communicate context to the agent**: When asking the Cursor agent to help with a task, provide context about what you're trying to achieve.
-
-9. **Validate dependencies**: Periodically run the validate-dependencies command to check for invalid or circular dependencies.
+<CardGroup cols={2}>
+  <Card title="📝 Detailed PRD" icon="lightbulb">
+    The more detailed your PRD, the better the generated tasks will be.
+  </Card>
+  
+  <Card title="👀 Review Tasks" icon="magnifying-glass">
+    After parsing the PRD, review the tasks to ensure they make sense and have appropriate dependencies.
+  </Card>
+  
+  <Card title="📊 Analyze Complexity" icon="chart-line">
+    Use the complexity analysis feature to identify which tasks should be broken down further.
+  </Card>
+  
+  <Card title="⛓️ Follow Dependencies" icon="link">
+    Always respect task dependencies - the Cursor agent will help with this.
+  </Card>
+  
+  <Card title="🔄 Update As You Go" icon="arrows-rotate">
+    If your implementation diverges from the plan, use the update command to keep future tasks aligned.
+  </Card>
+  
+  <Card title="📦 Break Down Tasks" icon="boxes-stacked">
+    Use the expand command to break down complex tasks into manageable subtasks.
+  </Card>
+  
+  <Card title="🔄 Regenerate Files" icon="file-arrow-up">
+    After any updates to tasks.json, regenerate the task files to keep them in sync.
+  </Card>
+  
+  <Card title="💬 Provide Context" icon="comment">
+    When asking the Cursor agent to help with a task, provide context about what you're trying to achieve.
+  </Card>
+  
+  <Card title="✅ Validate Dependencies" icon="circle-check">
+    Periodically run the validate-dependencies command to check for invalid or circular dependencies.
+  </Card>
+</CardGroup>
