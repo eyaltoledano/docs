@@ -16,22 +16,17 @@
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
-              "quickstart",
-              "development",
-              "docs/tutorial",
-              "docs/examples"
+              "docs/Installation",
+              "docs/cursor-setup",
+              "docs/configuration",
+              "docs/ai-development-workflow"
             ]
           },
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "docs/task-structure",
+              "docs/examples"
             ]
           }
         ]
