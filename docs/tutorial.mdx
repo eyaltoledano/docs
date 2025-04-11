@@ -214,130 +214,132 @@ This creates individual task files in the `tasks/` directory (e.g., `task_001.tx
 
 The Cursor agent is pre-configured (via the rules file) to follow this workflow:
 
-### 1. Task Discovery and Selection
+<AccordionGroup>
+  <Accordion title="1. Task Discovery and Selection">
+    Ask the agent to list available tasks:
 
-Ask the agent to list available tasks:
+    ```
+    What tasks are available to work on next?
+    ```
 
-```
-What tasks are available to work on next?
-```
+    The agent will:
 
-The agent will:
+    - Run `task-master list` to see all tasks
+    - Run `task-master next` to determine the next task to work on
+    - Analyze dependencies to determine which tasks are ready to be worked on
+    - Prioritize tasks based on priority level and ID order
+    - Suggest the next task(s) to implement
+  </Accordion>
 
-- Run `task-master list` to see all tasks
-- Run `task-master next` to determine the next task to work on
-- Analyze dependencies to determine which tasks are ready to be worked on
-- Prioritize tasks based on priority level and ID order
-- Suggest the next task(s) to implement
+  <Accordion title="2. Task Implementation">
+    When implementing a task, the agent will:
 
-### 2. Task Implementation
+    - Reference the task's details section for implementation specifics
+    - Consider dependencies on previous tasks
+    - Follow the project's coding standards
+    - Create appropriate tests based on the task's testStrategy
 
-When implementing a task, the agent will:
+    You can ask:
 
-- Reference the task's details section for implementation specifics
-- Consider dependencies on previous tasks
-- Follow the project's coding standards
-- Create appropriate tests based on the task's testStrategy
+    ```
+    Let's implement task 3. What does it involve?
+    ```
+  </Accordion>
 
-You can ask:
+  <Accordion title="3. Task Verification">
+    Before marking a task as complete, verify it according to:
 
-```
-Let's implement task 3. What does it involve?
-```
+    - The task's specified testStrategy
+    - Any automated tests in the codebase
+    - Manual verification if required
+  </Accordion>
 
-### 3. Task Verification
+  <Accordion title="4. Task Completion">
+    When a task is completed, tell the agent:
 
-Before marking a task as complete, verify it according to:
+    ```
+    Task 3 is now complete. Please update its status.
+    ```
 
-- The task's specified testStrategy
-- Any automated tests in the codebase
-- Manual verification if required
+    The agent will execute:
 
-### 4. Task Completion
+    ```bash
+    task-master set-status --id=3 --status=done
+    ```
+  </Accordion>
 
-When a task is completed, tell the agent:
+  <Accordion title="5. Handling Implementation Drift">
+    If during implementation, you discover that:
 
-```
-Task 3 is now complete. Please update its status.
-```
+    - The current approach differs significantly from what was planned
+    - Future tasks need to be modified due to current implementation choices
+    - New dependencies or requirements have emerged
 
-The agent will execute:
+    Tell the agent:
 
-```bash
-task-master set-status --id=3 --status=done
-```
+    ```
+    We've changed our approach. We're now using Express instead of Fastify. Please update all future tasks to reflect this change.
+    ```
 
-### 5. Handling Implementation Drift
+    The agent will execute:
 
-If during implementation, you discover that:
+    ```bash
+    task-master update --from=4 --prompt="Now we are using Express instead of Fastify."
+    ```
 
-- The current approach differs significantly from what was planned
-- Future tasks need to be modified due to current implementation choices
-- New dependencies or requirements have emerged
+    This will rewrite or re-scope subsequent tasks in tasks.json while preserving completed work.
+  </Accordion>
 
-Tell the agent:
+  <Accordion title="6. Breaking Down Complex Tasks">
+    For complex tasks that need more granularity:
 
-```
-We've changed our approach. We're now using Express instead of Fastify. Please update all future tasks to reflect this change.
-```
+    ```
+    Task 5 seems complex. Can you break it down into subtasks?
+    ```
 
-The agent will execute:
+    The agent will execute:
 
-```bash
-task-master update --from=4 --prompt="Now we are using Express instead of Fastify."
-```
+    ```bash
+    task-master expand --id=5 --num=3
+    ```
 
-This will rewrite or re-scope subsequent tasks in tasks.json while preserving completed work.
+    You can provide additional context:
 
-### 6. Breaking Down Complex Tasks
+    ```
+    Please break down task 5 with a focus on security considerations.
+    ```
 
-For complex tasks that need more granularity:
+    The agent will execute:
 
-```
-Task 5 seems complex. Can you break it down into subtasks?
-```
+    ```bash
+    task-master expand --id=5 --prompt="Focus on security aspects"
+    ```
 
-The agent will execute:
+    You can also expand all pending tasks:
 
-```bash
-task-master expand --id=5 --num=3
-```
+    ```
+    Please break down all pending tasks into subtasks.
+    ```
 
-You can provide additional context:
+    The agent will execute:
 
-```
-Please break down task 5 with a focus on security considerations.
-```
+    ```bash
+    task-master expand --all
+    ```
 
-The agent will execute:
+    For research-backed subtask generation using Perplexity AI:
 
-```bash
-task-master expand --id=5 --prompt="Focus on security aspects"
-```
+    ```
+    Please break down task 5 using research-backed generation.
+    ```
 
-You can also expand all pending tasks:
+    The agent will execute:
 
-```
-Please break down all pending tasks into subtasks.
-```
-
-The agent will execute:
-
-```bash
-task-master expand --all
-```
-
-For research-backed subtask generation using Perplexity AI:
-
-```
-Please break down task 5 using research-backed generation.
-```
-
-The agent will execute:
-
-```bash
-task-master expand --id=5 --research
-```
+    ```bash
+    task-master expand --id=5 --research
+    ```
+  </Accordion>
+</AccordionGroup>
 
 ## Example Cursor AI Interactions
 
